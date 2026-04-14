@@ -1,8 +1,8 @@
-# Projeto de Automacao com Playwright + SpecFlow
+# Projeto de Automacao com Playwright, SpecFlow e NUnit
 
-Este projeto contem testes automatizados de interface usando `.NET 8`, `Playwright`, `NUnit` e `SpecFlow`.
+Este projeto contem testes automatizados de interface usando `.NET 8`, `Playwright`, `SpecFlow` e `NUnit`.
 
-O objetivo e validar fluxos principais da aplicacao, como:
+O foco atual da automacao e validar fluxos principais da aplicacao, como:
 
 - login
 - cadastro de usuario
@@ -11,19 +11,19 @@ O objetivo e validar fluxos principais da aplicacao, como:
 
 - `.NET 8`
 - `Microsoft.Playwright`
-- `NUnit`
 - `SpecFlow`
-- `LivingDoc`
+- `NUnit`
+- `GitHub Actions`
 
 ## Estrutura do Projeto
 
 - `features/`: cenarios escritos em Gherkin
 - `steps/`: implementacao das steps do SpecFlow
-- `Pages/`: Page Objects com a logica de interacao da UI
+- `Pages/`: Page Objects com a logica de interacao da interface
 - `Hooks/`: setup e teardown compartilhados entre os cenarios
-- `Config/`: leitura das configuracoes externas do teste
+- `Config/`: leitura das configuracoes externas dos testes
 - `Support/`: massa dinamica e contexto compartilhado da execucao
-- `scripts/`: scripts auxiliares, incluindo resumo do pipeline
+- `scripts/`: scripts auxiliares para resumo e relatorio
 - `bin/Debug/net8.0/artifacts/`: screenshots gerados em falhas
 
 ## Pre-requisitos
@@ -41,24 +41,28 @@ Restaure os pacotes do projeto:
 dotnet restore
 ```
 
+Gere o build inicial:
+
+```powershell
+dotnet build
+```
+
 Instale os navegadores usados pelo Playwright:
 
 ```powershell
 pwsh bin/Debug/net8.0/playwright.ps1 install
 ```
 
-Se o script ainda nao existir, faca antes:
-
-```powershell
-dotnet build
-pwsh bin/Debug/net8.0/playwright.ps1 install
-```
-
 ## Configuracao
 
-Os dados fixos do projeto ficam em `testsettings.json`.
+O projeto usa arquivos de configuracao para evitar dados fixos no codigo.
 
-Nele voce pode alterar:
+Arquivos disponiveis:
+
+- `testsettings.json`: configuracao padrao
+- `testsettings.qa.json`: configuracao para ambiente de QA
+
+Exemplos de configuracoes disponiveis:
 
 - `BaseUrl`
 - `Browser.Headless`
@@ -68,40 +72,67 @@ Nele voce pode alterar:
 - `Register.DefaultPassword`
 - `Register.EmailDomain`
 
-Exemplo:
+Para executar apontando para o ambiente de QA:
 
-```json
-{
-  "BaseUrl": "https://automationpratice.com.br/",
-  "Browser": {
-    "Headless": true
-  }
-}
+```powershell
+$env:TEST_ENVIRONMENT="qa"
+dotnet test
+```
+
+Para voltar ao ambiente padrao da maquina atual:
+
+```powershell
+Remove-Item Env:TEST_ENVIRONMENT
 ```
 
 ## Como Executar os Testes
 
-Para rodar todos os testes:
+Executar todos os testes:
 
 ```powershell
 dotnet test
 ```
 
-Para rodar com o navegador visivel:
+Executar com navegador visivel:
 
 ```powershell
 $env:PLAYWRIGHT_HEADLESS="false"
 dotnet test
 ```
 
-Para voltar ao modo headless:
+Voltar ao modo headless:
 
 ```powershell
 Remove-Item Env:PLAYWRIGHT_HEADLESS
-dotnet test
 ```
 
-## Cenários Cobertos
+## Suites de Teste
+
+As features usam tags para organizacao por suite:
+
+- `@smoke`
+- `@regression`
+- `@register`
+
+Executar somente a suite smoke:
+
+```powershell
+dotnet test --filter TestCategory=smoke
+```
+
+Executar somente a suite de regressao:
+
+```powershell
+dotnet test --filter TestCategory=regression
+```
+
+Executar somente cenarios de cadastro:
+
+```powershell
+dotnet test --filter TestCategory=register
+```
+
+## Cenarios Cobertos
 
 ### Login
 
@@ -111,59 +142,49 @@ dotnet test
 
 ### Cadastro
 
-- nome obrigatorio
-- e-mail obrigatorio
-- e-mail invalido
-- senha obrigatoria
-- cadastro com sucesso usando massa dinamica
+- campo nome vazio
+- campo e-mail vazio
+- campo e-mail invalido
+- campo senha vazio
+- cadastro com sucesso com massa dinamica
 
-## Boas Praticas Usadas
+## Relatorio HTML Local
 
-- `Page Object Model` para separar regras de tela
-- `SpecFlow` para descrever comportamento em Gherkin
-- espera explicita de elementos antes de interagir
-- screenshot automatica quando um cenario falha
-- hooks centralizados em uma classe dedicada
-- configuracao isolada em arquivo externo
-- massa de cadastro gerada dinamicamente para evitar conflito entre execucoes
-
-## Comandos Uteis
-
-Gerar build do projeto:
+Para gerar um relatorio HTML local apos a execucao:
 
 ```powershell
-dotnet build
-```
-
-Executar um filtro de testes:
-
-```powershell
-dotnet test --filter TestCategory=register
+dotnet test --logger "trx;LogFileName=test-results.trx" --results-directory TestResults
+pwsh ./scripts/Convert-TrxToHtml.ps1 -ResultsPath TestResults -OutputPath TestResults/report.html
 ```
 
 ## Pipeline
 
-O projeto agora possui workflow em `.github/workflows/tests.yml`.
+O projeto possui workflow em `.github/workflows/tests.yml`.
 
 Esse pipeline:
 
 - restaura dependencias
 - compila o projeto
 - instala os navegadores do Playwright
-- executa os testes automatizados
+- executa os testes por suite
 - gera arquivo `.trx`
+- gera relatorio HTML complementar
 - publica resumo da execucao no GitHub Actions
 - envia artefatos com resultados e screenshots
+- roda por push, pull request, execucao manual e agendamento
+- executa apontando para o ambiente `qa`
+
+## Boas Praticas Aplicadas
+
+- `Page Object Model` para separar regras de tela
+- `SpecFlow` para descrever comportamento em Gherkin
+- hooks centralizados em uma classe dedicada
+- configuracao externa para evitar dados fixos no codigo
+- massa de cadastro gerada dinamicamente para evitar conflito entre execucoes
+- screenshot automatica quando um cenario falha
 
 ## Observacoes
 
-- Os arquivos `.feature` estao usando textos em portugues com steps em ingles.
+- Os arquivos `.feature` usam descricoes em portugues com steps em ingles.
 - O projeto esta configurado como projeto de teste em `play.csproj`.
-- O fluxo de login salva screenshot automaticamente em caso de erro para facilitar a analise.
-
-## Proximos Passos Sugeridos
-
-- adicionar tags por tipo de suite, como smoke e regressao
-- rodar pipeline tambem por agendamento
-- gerar relatorio HTML complementar para consulta local
-- integrar execucao com ambiente de QA dedicado
+- O ambiente de QA pode ser ajustado no arquivo `testsettings.qa.json`.

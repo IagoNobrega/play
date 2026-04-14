@@ -21,12 +21,14 @@ namespace play.Features
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("Register User")]
+    [NUnit.Framework.CategoryAttribute("regression")]
     public partial class RegisterUserFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-        private static string[] featureTags = ((string[])(null));
+        private static string[] featureTags = new string[] {
+                "regression"};
         
 #line 1 "Register.feature"
 #line hidden
@@ -35,7 +37,7 @@ namespace play.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "features", "Register User", "  Eu como cliente\r\n  Quero me cadastrar na aplicação\r\n  Para fazer um pedido de c" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "features", "Register User", "  Eu como cliente\r\n  Quero me cadastrar na aplicacao\r\n  Para fazer um pedido de c" +
                     "ompra", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -76,9 +78,9 @@ namespace play.Features
         
         public virtual void FeatureBackground()
         {
-#line 6
-  #line hidden
 #line 7
+  #line hidden
+#line 8
     testRunner.Given("I am on Register screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
         }
@@ -86,13 +88,15 @@ namespace play.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Campo nome vazio")]
         [NUnit.Framework.CategoryAttribute("register")]
+        [NUnit.Framework.CategoryAttribute("smoke")]
         public void CampoNomeVazio()
         {
             string[] tagsOfScenario = new string[] {
-                    "register"};
+                    "register",
+                    "smoke"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Campo nome vazio", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 10
+#line 12
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -102,13 +106,13 @@ namespace play.Features
             else
             {
                 this.ScenarioStart();
-#line 6
+#line 7
   this.FeatureBackground();
 #line hidden
-#line 11
+#line 13
     testRunner.When("I click on Register", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 12
+#line 14
     testRunner.Then("I see message \"O campo nome deve ser prenchido\" on Register", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -118,13 +122,15 @@ namespace play.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Campo email vazio")]
         [NUnit.Framework.CategoryAttribute("register")]
+        [NUnit.Framework.CategoryAttribute("regression")]
         public void CampoEmailVazio()
         {
             string[] tagsOfScenario = new string[] {
-                    "register"};
+                    "register",
+                    "regression"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Campo email vazio", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 15
+#line 18
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -134,16 +140,16 @@ namespace play.Features
             else
             {
                 this.ScenarioStart();
-#line 6
+#line 7
   this.FeatureBackground();
 #line hidden
-#line 16
+#line 19
     testRunner.And("I fill name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 17
+#line 20
     testRunner.When("I click on Register", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 18
+#line 21
     testRunner.Then("I see message \"O campo e-mail deve ser prenchido corretamente\" on Register", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -151,15 +157,17 @@ namespace play.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Campo email inválido")]
+        [NUnit.Framework.DescriptionAttribute("Campo email invalido")]
         [NUnit.Framework.CategoryAttribute("register")]
+        [NUnit.Framework.CategoryAttribute("regression")]
         public void CampoEmailInvalido()
         {
             string[] tagsOfScenario = new string[] {
-                    "register"};
+                    "register",
+                    "regression"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Campo email inválido", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 21
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Campo email invalido", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 25
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -169,19 +177,19 @@ namespace play.Features
             else
             {
                 this.ScenarioStart();
-#line 6
+#line 7
   this.FeatureBackground();
 #line hidden
-#line 22
+#line 26
     testRunner.And("I fill name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 23
+#line 27
     testRunner.And("I fill e-mail \"invalidEmail\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 24
+#line 28
     testRunner.When("I click on Register", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 25
+#line 29
     testRunner.Then("I see message \"O campo e-mail deve ser prenchido corretamente\" on Register", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -191,13 +199,15 @@ namespace play.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Campo senha vazio")]
         [NUnit.Framework.CategoryAttribute("register")]
+        [NUnit.Framework.CategoryAttribute("regression")]
         public void CampoSenhaVazio()
         {
             string[] tagsOfScenario = new string[] {
-                    "register"};
+                    "register",
+                    "regression"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Campo senha vazio", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 28
+#line 33
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -207,20 +217,20 @@ namespace play.Features
             else
             {
                 this.ScenarioStart();
-#line 6
+#line 7
   this.FeatureBackground();
 #line hidden
-#line 29
+#line 34
     testRunner.And("I fill name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 30
+#line 35
     testRunner.And("I fill e-mail \"iago@teste.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 31
+#line 36
     testRunner.When("I click on Register", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 32
-    testRunner.Then("I see message \"O campo senha deve ter pelo menos 6 dígitos\" on Register", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 37
+    testRunner.Then("I see message \"O campo senha deve ter pelo menos 6 digitos\" on Register", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -229,13 +239,17 @@ namespace play.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Cadastro com sucesso")]
         [NUnit.Framework.CategoryAttribute("register")]
+        [NUnit.Framework.CategoryAttribute("smoke")]
+        [NUnit.Framework.CategoryAttribute("regression")]
         public void CadastroComSucesso()
         {
             string[] tagsOfScenario = new string[] {
-                    "register"};
+                    "register",
+                    "smoke",
+                    "regression"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cadastro com sucesso", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 35
+#line 42
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -245,16 +259,16 @@ namespace play.Features
             else
             {
                 this.ScenarioStart();
-#line 6
+#line 7
   this.FeatureBackground();
 #line hidden
-#line 36
+#line 43
     testRunner.And("I fill valid register data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 37
+#line 44
     testRunner.When("I click on Register", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 38
+#line 45
     testRunner.Then("I am redirected after register", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

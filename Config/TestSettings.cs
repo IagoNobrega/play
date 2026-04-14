@@ -2,6 +2,7 @@ namespace play.Config;
 
 public sealed class TestSettings
 {
+    public string EnvironmentName { get; set; } = "local";
     public string BaseUrl { get; set; } = "https://automationpratice.com.br/";
     public BrowserSettings Browser { get; set; } = new();
     public LoginSettings Login { get; set; } = new();

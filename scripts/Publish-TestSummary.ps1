@@ -1,5 +1,7 @@
 param(
-    [string]$ResultsPath = "TestResults"
+    [string]$ResultsPath = "TestResults",
+    [string]$Suite = "all",
+    [string]$EnvironmentName = "local"
 )
 
 $summaryFile = $env:GITHUB_STEP_SUMMARY
@@ -21,6 +23,9 @@ $counters = $trx.TestRun.ResultSummary.Counters
 $failedTests = @($trx.TestRun.Results.UnitTestResult | Where-Object { $_.outcome -eq "Failed" })
 
 Add-Content -Path $summaryFile -Value "## Resultado dos testes"
+Add-Content -Path $summaryFile -Value ""
+Add-Content -Path $summaryFile -Value "- Suite: **$Suite**"
+Add-Content -Path $summaryFile -Value "- Ambiente: **$EnvironmentName**"
 Add-Content -Path $summaryFile -Value ""
 Add-Content -Path $summaryFile -Value "| Total | Passed | Failed | Skipped |"
 Add-Content -Path $summaryFile -Value "| --- | --- | --- | --- |"

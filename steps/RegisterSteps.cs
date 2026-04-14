@@ -56,7 +56,7 @@ public class RegisterSteps
     [Then(@"I see message ""(.*)"" on Register")]
     public async Task EntaoVejoMensagemNoCadastro(string message)
     {
-        await Session.RegisterPage.CheckErrorMessage(message);
+        await Session.RegisterPage.AssertErrorMessage(message);
     }
 
     [Then("I am redirected after register")]

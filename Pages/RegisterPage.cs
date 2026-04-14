@@ -1,5 +1,7 @@
 using Microsoft.Playwright;
 using NUnit.Framework;
+using System.Globalization;
+using System.Text;
 
 namespace play.Pages;
 
@@ -59,11 +61,49 @@ public class RegisterPage
             $"Mensagem '{message}' não encontrada.");
     }
 
+    public async Task AssertErrorMessage(string message)
+    {
+        var normalizedExpected = NormalizeText(message);
+        var timeoutAt = DateTime.UtcNow.AddSeconds(10);
+        var lastVisibleText = string.Empty;
+
+        while (DateTime.UtcNow < timeoutAt)
+        {
+            lastVisibleText = await _page.Locator("body").InnerTextAsync();
+            var normalizedVisibleText = NormalizeText(lastVisibleText);
+
+            if (normalizedVisibleText.Contains(normalizedExpected))
+            {
+                return;
+            }
+
+            await Task.Delay(250);
+        }
+
+        Assert.Fail($"Mensagem '{message}' nao encontrada. Texto visivel atual: {lastVisibleText}");
+    }
+
     public async Task CheckSuccessMessage()
     {
         var titulo = _page.GetByRole(AriaRole.Heading, new() { Name = "Cadastro realizado!" });
         await titulo.WaitForAsync();
         Assert.That(await titulo.IsVisibleAsync(), Is.True);
         await _page.GetByRole(AriaRole.Button, new() { Name = "OK" }).ClickAsync();
+    }
+
+    private static string NormalizeText(string value)
+    {
+        var normalized = value.Normalize(NormalizationForm.FormD);
+        var builder = new StringBuilder();
+
+        foreach (var character in normalized)
+        {
+            if (CharUnicodeInfo.GetUnicodeCategory(character) != UnicodeCategory.NonSpacingMark)
+            {
+                builder.Append(char.ToLowerInvariant(character));
+            }
+        }
+
+        return builder.ToString().Normalize(NormalizationForm.FormC);
     }
 }

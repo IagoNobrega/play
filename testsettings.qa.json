@@ -1,0 +1,15 @@
+{
+  "BaseUrl": "https://qa.automationpratice.com.br/",
+  "Browser": {
+    "Headless": true
+  },
+  "Login": {
+    "Email": "qa.user@teste.com.br",
+    "Password": "123456"
+  },
+  "Register": {
+    "DefaultName": "QA User",
+    "DefaultPassword": "123456",
+    "EmailDomain": "qa.teste.com.br"
+  }
+}
