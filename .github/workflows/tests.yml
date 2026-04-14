@@ -25,6 +25,9 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      TEST_ENVIRONMENT: local
+      BASE_URL_OVERRIDE: https://automationpratice.com.br/
     strategy:
       fail-fast: false
       matrix:
@@ -59,6 +62,8 @@ jobs:
         shell: pwsh
         run: |
           $testEnvironment = "local"
+          $baseUrlOverride = "https://automationpratice.com.br/"
+
           if ("${{ github.event_name }}" -eq "workflow_dispatch" -and "${{ github.event.inputs.test_environment }}" -ne "") {
             $testEnvironment = "${{ github.event.inputs.test_environment }}"
           }
@@ -66,8 +71,16 @@ jobs:
           "TEST_ENVIRONMENT=$testEnvironment" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
           if ($testEnvironment -eq "qa" -and "${{ vars.QA_BASE_URL }}" -ne "") {
-            "BASE_URL_OVERRIDE=${{ vars.QA_BASE_URL }}" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+            $baseUrlOverride = "${{ vars.QA_BASE_URL }}"
           }
+
+          "BASE_URL_OVERRIDE=$baseUrlOverride" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Show selected environment
+        shell: pwsh
+        run: |
+          Write-Host "TEST_ENVIRONMENT=$env:TEST_ENVIRONMENT"
+          Write-Host "BASE_URL_OVERRIDE=$env:BASE_URL_OVERRIDE"
 
       - name: Run automated tests
         run: dotnet test --configuration Release --no-build --filter "${{ env.DOTNET_TEST_FILTER }}" --logger "trx;LogFileName=test-results.trx" --results-directory TestResults

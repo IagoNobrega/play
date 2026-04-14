@@ -14,8 +14,11 @@ public static class TestSettingsLoader
     private static TestSettings LoadInternal()
     {
         var environment = Environment.GetEnvironmentVariable("TEST_ENVIRONMENT") ?? "local";
+        var baseUrlOverride = Environment.GetEnvironmentVariable("BASE_URL_OVERRIDE");
         var defaultSettings = ReadSettingsFile("testsettings.json");
-        var environmentSettings = ReadSettingsFile($"testsettings.{environment}.json");
+        var environmentSettings = ShouldLoadEnvironmentSettings(environment, baseUrlOverride)
+            ? ReadSettingsFile($"testsettings.{environment}.json")
+            : null;
 
         var settings = defaultSettings ?? new TestSettings();
         if (environmentSettings is not null)
@@ -23,7 +26,6 @@ public static class TestSettingsLoader
             settings = Merge(settings, environmentSettings);
         }
 
-        var baseUrlOverride = Environment.GetEnvironmentVariable("BASE_URL_OVERRIDE");
         if (!string.IsNullOrWhiteSpace(baseUrlOverride))
         {
             settings.BaseUrl = baseUrlOverride;
@@ -31,6 +33,31 @@ public static class TestSettingsLoader
 
         settings.EnvironmentName = environment;
         return settings;
+    }
+
+    private static bool ShouldLoadEnvironmentSettings(string environment, string? baseUrlOverride)
+    {
+        if (!string.Equals(environment, "qa", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
+        if (!string.IsNullOrWhiteSpace(baseUrlOverride))
+        {
+            return true;
+        }
+
+        var isGitHubActions = string.Equals(
+            Environment.GetEnvironmentVariable("GITHUB_ACTIONS"),
+            "true",
+            StringComparison.OrdinalIgnoreCase);
+
+        var isManualDispatch = string.Equals(
+            Environment.GetEnvironmentVariable("GITHUB_EVENT_NAME"),
+            "workflow_dispatch",
+            StringComparison.OrdinalIgnoreCase);
+
+        return !isGitHubActions || isManualDispatch;
     }
 
     private static TestSettings? ReadSettingsFile(string fileName)

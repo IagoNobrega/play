@@ -20,6 +20,7 @@ public sealed class TestHooks
     public async Task Setup()
     {
         var settings = TestSettingsLoader.Load();
+        Console.WriteLine($"Running tests on environment '{settings.EnvironmentName}' using base URL '{settings.BaseUrl}'.");
         var playwright = await Playwright.CreateAsync();
         var browser = await playwright.Chromium.LaunchAsync(new()
         {
