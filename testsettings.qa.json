@@ -1,5 +1,5 @@
 {
-  "BaseUrl": "https://qa.automationpratice.com.br/",
+  "BaseUrl": "https://automationpratice.com.br/",
   "Browser": {
     "Headless": true
   },

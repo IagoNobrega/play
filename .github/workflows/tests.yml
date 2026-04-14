@@ -9,6 +9,15 @@ on:
   schedule:
     - cron: '0 6 * * 1-5'
   workflow_dispatch:
+    inputs:
+      test_environment:
+        description: "Environment to run tests against"
+        required: true
+        default: "local"
+        type: choice
+        options:
+          - local
+          - qa
 
 permissions:
   contents: read
@@ -20,11 +29,6 @@ jobs:
       fail-fast: false
       matrix:
         suite: [smoke, regression]
-        environment: [qa]
-
-    env:
-      TEST_ENVIRONMENT: ${{ matrix.environment }}
-      TEST_SUITE: ${{ matrix.suite }}
 
     steps:
       - name: Checkout repository
@@ -51,24 +55,38 @@ jobs:
           $filter = if ("${{ matrix.suite }}" -eq "smoke") { "TestCategory=smoke" } else { "TestCategory=regression" }
           "DOTNET_TEST_FILTER=$filter" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
+      - name: Choose target environment
+        shell: pwsh
+        run: |
+          $testEnvironment = "local"
+          if ("${{ github.event_name }}" -eq "workflow_dispatch" -and "${{ github.event.inputs.test_environment }}" -ne "") {
+            $testEnvironment = "${{ github.event.inputs.test_environment }}"
+          }
+
+          "TEST_ENVIRONMENT=$testEnvironment" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+          if ($testEnvironment -eq "qa" -and "${{ vars.QA_BASE_URL }}" -ne "") {
+            "BASE_URL_OVERRIDE=${{ vars.QA_BASE_URL }}" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          }
+
       - name: Run automated tests
         run: dotnet test --configuration Release --no-build --filter "${{ env.DOTNET_TEST_FILTER }}" --logger "trx;LogFileName=test-results.trx" --results-directory TestResults
 
       - name: Publish execution summary
         if: always()
         shell: pwsh
-        run: ./scripts/Publish-TestSummary.ps1 -ResultsPath TestResults -Suite "${{ matrix.suite }}" -EnvironmentName "${{ matrix.environment }}"
+        run: ./scripts/Publish-TestSummary.ps1 -ResultsPath TestResults -Suite "${{ matrix.suite }}" -EnvironmentName "${{ env.TEST_ENVIRONMENT }}"
 
       - name: Generate HTML report
         if: always()
         shell: pwsh
-        run: ./scripts/Convert-TrxToHtml.ps1 -ResultsPath TestResults -OutputPath "TestResults/report-${{ matrix.suite }}-${{ matrix.environment }}.html"
+        run: ./scripts/Convert-TrxToHtml.ps1 -ResultsPath TestResults -OutputPath "TestResults/report-${{ matrix.suite }}-${{ env.TEST_ENVIRONMENT }}.html"
 
       - name: Upload test artifacts
         if: always()
         uses: actions/upload-artifact@v5
         with:
-          name: execution-artifacts-${{ matrix.suite }}-${{ matrix.environment }}
+          name: execution-artifacts-${{ matrix.suite }}-${{ env.TEST_ENVIRONMENT }}
           if-no-files-found: warn
           path: |
             TestResults

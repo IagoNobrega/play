@@ -79,6 +79,14 @@ $env:TEST_ENVIRONMENT="qa"
 dotnet test
 ```
 
+Se voce quiser sobrescrever a URL sem editar arquivo:
+
+```powershell
+$env:BASE_URL_OVERRIDE="https://meu-ambiente-qa.exemplo.com"
+$env:TEST_ENVIRONMENT="qa"
+dotnet test
+```
+
 Para voltar ao ambiente padrao da maquina atual:
 
 ```powershell
@@ -172,7 +180,9 @@ Esse pipeline:
 - publica resumo da execucao no GitHub Actions
 - envia artefatos com resultados e screenshots
 - roda por push, pull request, execucao manual e agendamento
-- executa apontando para o ambiente `qa`
+- usa `local` por padrao no CI
+- permite execucao manual contra `qa`
+- aceita a variavel de repositorio `QA_BASE_URL` para apontar o QA real
 
 ## Boas Praticas Aplicadas
 
@@ -187,4 +197,4 @@ Esse pipeline:
 
 - Os arquivos `.feature` usam descricoes em portugues com steps em ingles.
 - O projeto esta configurado como projeto de teste em `play.csproj`.
-- O ambiente de QA pode ser ajustado no arquivo `testsettings.qa.json`.
+- O ambiente de QA pode ser ajustado em `testsettings.qa.json` ou via `BASE_URL_OVERRIDE`.

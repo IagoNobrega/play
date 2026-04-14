@@ -23,6 +23,12 @@ public static class TestSettingsLoader
             settings = Merge(settings, environmentSettings);
         }
 
+        var baseUrlOverride = Environment.GetEnvironmentVariable("BASE_URL_OVERRIDE");
+        if (!string.IsNullOrWhiteSpace(baseUrlOverride))
+        {
+            settings.BaseUrl = baseUrlOverride;
+        }
+
         settings.EnvironmentName = environment;
         return settings;
     }
