@@ -1,0 +1,15 @@
+{
+  "BaseUrl": "https://automationpratice.com.br/",
+  "Browser": {
+    "Headless": true
+  },
+  "Login": {
+    "Email": "iago@teste.com.br",
+    "Password": "123456"
+  },
+  "Register": {
+    "DefaultName": "Iago Teste",
+    "DefaultPassword": "123456",
+    "EmailDomain": "teste.com.br"
+  }
+}

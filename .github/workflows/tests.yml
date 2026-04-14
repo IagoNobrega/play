@@ -1,0 +1,53 @@
+name: UI Tests
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build project
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Install Playwright browsers
+        shell: pwsh
+        run: pwsh bin/Release/net8.0/playwright.ps1 install --with-deps chromium
+
+      - name: Run automated tests
+        run: dotnet test --configuration Release --no-build --logger "trx;LogFileName=test-results.trx" --results-directory TestResults
+
+      - name: Publish execution summary
+        if: always()
+        shell: pwsh
+        run: ./scripts/Publish-TestSummary.ps1 -ResultsPath TestResults
+
+      - name: Upload test artifacts
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: execution-artifacts
+          if-no-files-found: warn
+          path: |
+            TestResults
+            bin/Release/net8.0/artifacts
+            bin/Debug/net8.0/artifacts

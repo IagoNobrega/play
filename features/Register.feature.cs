@@ -249,18 +249,12 @@ namespace play.Features
   this.FeatureBackground();
 #line hidden
 #line 36
-    testRunner.And("I fill name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("I fill valid register data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 37
-    testRunner.And("I fill e-mail \"iago2teste@teste.com.br\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 38
-    testRunner.And("I fill password \"123456\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 39
     testRunner.When("I click on Register", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 40
+#line 38
     testRunner.Then("I am redirected after register", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

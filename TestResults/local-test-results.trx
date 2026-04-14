@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="a1b3029d-5603-460f-9616-3a1f4803e2da" name="Desenvolvimento@DESENVOLVIMENTO 2026-04-14 08:19:42" runUser="DESENVOLVIMENTO\Desenvolvimento" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-04-14T08:19:42.2451637-03:00" queuing="2026-04-14T08:19:42.2451642-03:00" start="2026-04-14T08:19:38.7144863-03:00" finish="2026-04-14T08:19:45.7820259-03:00" />
+  <TestSettings name="default" id="c4d3fed1-9664-4a53-8dbe-721730dbd7ae">
+    <Deployment runDeploymentRoot="Desenvolvimento_DESENVOLVIMENTO_2026-04-14_08_19_42" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="53d43800-107b-481d-8ffd-bec82880689b" testId="b07d2467-846a-4398-8fe7-8c7d83956b59" testName="CampoEmailVazio" computerName="DESENVOLVIMENTO" duration="00:00:00.5394000" startTime="2026-04-14T08:19:41.8335340-03:00" endTime="2026-04-14T08:19:42.3729333-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="53d43800-107b-481d-8ffd-bec82880689b">
+      <Output>
+        <StdOut>Given I am on Register screen&#xD;
+-&gt; skipped because of previous errors&#xD;
+And I fill name&#xD;
+-&gt; skipped because of previous errors&#xD;
+When I click on Register&#xD;
+-&gt; skipped because of previous errors&#xD;
+Then I see message "O campo e-mail deve ser prenchido corretamente" on Register&#xD;
+-&gt; skipped because of previous errors</StdOut>
+        <ErrorInfo>
+          <Message>Microsoft.Playwright.PlaywrightException : spawn EPERM&#xD;
+Call log:&#xD;
+  - &lt;launching&gt; C:\Users\iagon\AppData\Local\ms-playwright\chromium_headless_shell-1217\chrome-headless-shell-win64\chrome-headless-shell.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\Users\iagon\AppData\Local\Temp\playwright_chromiumdev_profile-2YQVq5 --remote-debugging-pipe --no-startup-window</Message>
+          <StackTrace>   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.FireEvents(HookType hookType)&#xD;
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.FireScenarioEvents(HookType bindingEvent)&#xD;
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnScenarioStart()&#xD;
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep()&#xD;
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors()&#xD;
+   at play.Features.RegisterUserFeature.ScenarioCleanup()&#xD;
+   at play.Features.RegisterUserFeature.CampoEmailVazio() in C:\Users\iagon\OneDrive\Desktop\play\features\Register.feature:line 18&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="24d1b08f-3a87-43f5-99cd-6638efb58670" testId="381afc73-9784-49b8-249e-79bbffe744e8" testName="CadastroComSucesso" computerName="DESENVOLVIMENTO" duration="00:00:01.0777580" startTime="2026-04-14T08:19:40.2509583-03:00" endTime="2026-04-14T08:19:41.3286665-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="24d1b08f-3a87-43f5-99cd-6638efb58670">
+      <Output>
+        <StdOut>Given I am on Register screen&#xD;
+-&gt; skipped because of previous errors&#xD;
+And I fill valid register data&#xD;
+-&gt; skipped because of previous errors&#xD;
+When I click on Register&#xD;
+-&gt; skipped because of previous errors&#xD;
+Then I am redirected after register&#xD;
+-&gt; skipped because of previous errors</StdOut>
+        <ErrorInfo>
+          <Message>Microsoft.Playwright.PlaywrightException : spawn EPERM&#xD;
+Call log:&#xD;
+  - &lt;launching&gt; C:\Users\iagon\AppData\Local\ms-playwright\chromium_headless_shell-1217\chrome-headless-shell-win64\chrome-headless-shell.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\Users\iagon\AppData\Local\Temp\playwright_chromiumdev_profile-eLIG1C --remote-debugging-pipe --no-startup-window</Message>
+          <StackTrace>   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.FireEvents(HookType hookType)&#xD;
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.FireScenarioEvents(HookType bindingEvent)&#xD;
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnScenarioStart()&#xD;
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep()&#xD;
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors()&#xD;
+   at play.Features.RegisterUserFeature.ScenarioCleanup()&#xD;
+   at play.Features.RegisterUserFeature.CadastroComSucesso() in C:\Users\iagon\OneDrive\Desktop\play\features\Register.feature:line 38&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="90faebad-f570-4e2f-b4c6-ea64a0c24d8f" testId="6701a1e2-21ad-19a3-1ad9-f4adfd0fb84e" testName="CampoEmailInvalido" computerName="DESENVOLVIMENTO" duration="00:00:00.5033590" startTime="2026-04-14T08:19:41.3301145-03:00" endTime="2026-04-14T08:19:41.8334735-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="90faebad-f570-4e2f-b4c6-ea64a0c24d8f">
+      <Output>
+        <StdOut>Given I am on Register screen&#xD;
+-&gt; skipped because of previous errors&#xD;
+And I fill name&#xD;
+-&gt; skipped because of previous errors&#xD;
+And I fill e-mail "invalidEmail"&#xD;
+-&gt; skipped because of previous errors&#xD;
+When I click on Register&#xD;
+-&gt; skipped because of previous errors&#xD;
+Then I see message "O campo e-mail deve ser prenchido corretamente" on Register&#xD;
+-&gt; skipped because of previous errors</StdOut>
+        <ErrorInfo>
+          <Message>Microsoft.Playwright.PlaywrightException : spawn EPERM&#xD;
+Call log:&#xD;
+  - &lt;launching&gt; C:\Users\iagon\AppData\Local\ms-playwright\chromium_headless_shell-1217\chrome-headless-shell-win64\chrome-headless-shell.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\Users\iagon\AppData\Local\Temp\playwright_chromiumdev_profile-uUE3Xe --remote-debugging-pipe --no-startup-window</Message>
+          <StackTrace>   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.FireEvents(HookType hookType)&#xD;
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.FireScenarioEvents(HookType bindingEvent)&#xD;
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnScenarioStart()&#xD;
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep()&#xD;
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors()&#xD;
+   at play.Features.RegisterUserFeature.ScenarioCleanup()&#xD;
+   at play.Features.RegisterUserFeature.CampoEmailInvalido() in C:\Users\iagon\OneDrive\Desktop\play\features\Register.feature:line 25&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="62353e32-36a0-41c3-ab27-f5c72707d045" testId="19612a06-0fc6-06a2-8aa0-92b090044d11" testName="CampoNomeVazio" computerName="DESENVOLVIMENTO" duration="00:00:00.4415470" startTime="2026-04-14T08:19:42.3729966-03:00" endTime="2026-04-14T08:19:42.8145435-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="62353e32-36a0-41c3-ab27-f5c72707d045">
+      <Output>
+        <StdOut>Given I am on Register screen&#xD;
+-&gt; skipped because of previous errors&#xD;
+When I click on Register&#xD;
+-&gt; skipped because of previous errors&#xD;
+Then I see message "O campo nome deve ser prenchido" on Register&#xD;
+-&gt; skipped because of previous errors</StdOut>
+        <ErrorInfo>
+          <Message>Microsoft.Playwright.PlaywrightException : spawn EPERM&#xD;
+Call log:&#xD;
+  - &lt;launching&gt; C:\Users\iagon\AppData\Local\ms-playwright\chromium_headless_shell-1217\chrome-headless-shell-win64\chrome-headless-shell.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\Users\iagon\AppData\Local\Temp\playwright_chromiumdev_profile-XNsUDK --remote-debugging-pipe --no-startup-window</Message>
+          <StackTrace>   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.FireEvents(HookType hookType)&#xD;
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.FireScenarioEvents(HookType bindingEvent)&#xD;
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnScenarioStart()&#xD;
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep()&#xD;
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors()&#xD;
+   at play.Features.RegisterUserFeature.ScenarioCleanup()&#xD;
+   at play.Features.RegisterUserFeature.CampoNomeVazio() in C:\Users\iagon\OneDrive\Desktop\play\features\Register.feature:line 12&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="8f80368f-4c9e-4861-906b-3a6cc6864897" testId="a2174780-bb4c-cced-0a8c-b0d347f54e81" testName="CampoSenhaVazio" computerName="DESENVOLVIMENTO" duration="00:00:00.7648290" startTime="2026-04-14T08:19:42.8146221-03:00" endTime="2026-04-14T08:19:43.5794496-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8f80368f-4c9e-4861-906b-3a6cc6864897">
+      <Output>
+        <StdOut>Given I am on Register screen&#xD;
+-&gt; skipped because of previous errors&#xD;
+And I fill name&#xD;
+-&gt; skipped because of previous errors&#xD;
+And I fill e-mail "iago@teste.com"&#xD;
+-&gt; skipped because of previous errors&#xD;
+When I click on Register&#xD;
+-&gt; skipped because of previous errors&#xD;
+Then I see message "O campo senha deve ter pelo menos 6 dígitos" on Register&#xD;
+-&gt; skipped because of previous errors</StdOut>
+        <ErrorInfo>
+          <Message>Microsoft.Playwright.PlaywrightException : spawn EPERM&#xD;
+Call log:&#xD;
+  - &lt;launching&gt; C:\Users\iagon\AppData\Local\ms-playwright\chromium_headless_shell-1217\chrome-headless-shell-win64\chrome-headless-shell.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\Users\iagon\AppData\Local\Temp\playwright_chromiumdev_profile-a2pMWg --remote-debugging-pipe --no-startup-window</Message>
+          <StackTrace>   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.FireEvents(HookType hookType)&#xD;
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.FireScenarioEvents(HookType bindingEvent)&#xD;
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnScenarioStart()&#xD;
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep()&#xD;
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors()&#xD;
+   at play.Features.RegisterUserFeature.ScenarioCleanup()&#xD;
+   at play.Features.RegisterUserFeature.CampoSenhaVazio() in C:\Users\iagon\OneDrive\Desktop\play\features\Register.feature:line 32&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CampoNomeVazio" storage="c:\users\iagon\onedrive\desktop\play\bin\debug\net8.0\play.dll" id="19612a06-0fc6-06a2-8aa0-92b090044d11">
+      <Execution id="62353e32-36a0-41c3-ab27-f5c72707d045" />
+      <TestMethod codeBase="C:\Users\iagon\OneDrive\Desktop\play\bin\Debug\net8.0\play.dll" adapterTypeName="executor://nunit3testexecutor/" className="play.Features.RegisterUserFeature" name="CampoNomeVazio" />
+    </UnitTest>
+    <UnitTest name="CampoEmailVazio" storage="c:\users\iagon\onedrive\desktop\play\bin\debug\net8.0\play.dll" id="b07d2467-846a-4398-8fe7-8c7d83956b59">
+      <Execution id="53d43800-107b-481d-8ffd-bec82880689b" />
+      <TestMethod codeBase="C:\Users\iagon\OneDrive\Desktop\play\bin\Debug\net8.0\play.dll" adapterTypeName="executor://nunit3testexecutor/" className="play.Features.RegisterUserFeature" name="CampoEmailVazio" />
+    </UnitTest>
+    <UnitTest name="CadastroComSucesso" storage="c:\users\iagon\onedrive\desktop\play\bin\debug\net8.0\play.dll" id="381afc73-9784-49b8-249e-79bbffe744e8">
+      <Execution id="24d1b08f-3a87-43f5-99cd-6638efb58670" />
+      <TestMethod codeBase="C:\Users\iagon\OneDrive\Desktop\play\bin\Debug\net8.0\play.dll" adapterTypeName="executor://nunit3testexecutor/" className="play.Features.RegisterUserFeature" name="CadastroComSucesso" />
+    </UnitTest>
+    <UnitTest name="CampoSenhaVazio" storage="c:\users\iagon\onedrive\desktop\play\bin\debug\net8.0\play.dll" id="a2174780-bb4c-cced-0a8c-b0d347f54e81">
+      <Execution id="8f80368f-4c9e-4861-906b-3a6cc6864897" />
+      <TestMethod codeBase="C:\Users\iagon\OneDrive\Desktop\play\bin\Debug\net8.0\play.dll" adapterTypeName="executor://nunit3testexecutor/" className="play.Features.RegisterUserFeature" name="CampoSenhaVazio" />
+    </UnitTest>
+    <UnitTest name="CampoEmailInvalido" storage="c:\users\iagon\onedrive\desktop\play\bin\debug\net8.0\play.dll" id="6701a1e2-21ad-19a3-1ad9-f4adfd0fb84e">
+      <Execution id="90faebad-f570-4e2f-b4c6-ea64a0c24d8f" />
+      <TestMethod codeBase="C:\Users\iagon\OneDrive\Desktop\play\bin\Debug\net8.0\play.dll" adapterTypeName="executor://nunit3testexecutor/" className="play.Features.RegisterUserFeature" name="CampoEmailInvalido" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="b07d2467-846a-4398-8fe7-8c7d83956b59" executionId="53d43800-107b-481d-8ffd-bec82880689b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="381afc73-9784-49b8-249e-79bbffe744e8" executionId="24d1b08f-3a87-43f5-99cd-6638efb58670" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6701a1e2-21ad-19a3-1ad9-f4adfd0fb84e" executionId="90faebad-f570-4e2f-b4c6-ea64a0c24d8f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="19612a06-0fc6-06a2-8aa0-92b090044d11" executionId="62353e32-36a0-41c3-ab27-f5c72707d045" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a2174780-bb4c-cced-0a8c-b0d347f54e81" executionId="8f80368f-4c9e-4861-906b-3a6cc6864897" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados que não estão em uma lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos os resultados carregados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="5" executed="5" passed="0" failed="5" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>NUnit Adapter 4.5.0.0: Test execution started&#xD;
+Running selected tests in C:\Users\iagon\OneDrive\Desktop\play\bin\Debug\net8.0\play.dll&#xD;
+   NUnit3TestExecutor discovered 5 of 5 NUnit test cases using Current Discovery mode, Non-Explicit run&#xD;
+NUnit Adapter 4.5.0.0: Test execution complete&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="DESENVOLVIMENTO" outcome="Warning" timestamp="2026-04-14T08:19:41.3461375-03:00">
+        <Text>Given I am on Register screen&#xD;
+-&gt; skipped because of previous errors&#xD;
+And I fill valid register data&#xD;
+-&gt; skipped because of previous errors&#xD;
+When I click on Register&#xD;
+-&gt; skipped because of previous errors&#xD;
+Then I am redirected after register&#xD;
+-&gt; skipped because of previous errors&#xD;
+</Text>
+      </RunInfo>
+      <RunInfo computerName="DESENVOLVIMENTO" outcome="Warning" timestamp="2026-04-14T08:19:41.8357056-03:00">
+        <Text>Given I am on Register screen&#xD;
+-&gt; skipped because of previous errors&#xD;
+And I fill name&#xD;
+-&gt; skipped because of previous errors&#xD;
+And I fill e-mail "invalidEmail"&#xD;
+-&gt; skipped because of previous errors&#xD;
+When I click on Register&#xD;
+-&gt; skipped because of previous errors&#xD;
+Then I see message "O campo e-mail deve ser prenchido corretamente" on Register&#xD;
+-&gt; skipped because of previous errors&#xD;
+</Text>
+      </RunInfo>
+      <RunInfo computerName="DESENVOLVIMENTO" outcome="Warning" timestamp="2026-04-14T08:19:42.3742330-03:00">
+        <Text>Given I am on Register screen&#xD;
+-&gt; skipped because of previous errors&#xD;
+And I fill name&#xD;
+-&gt; skipped because of previous errors&#xD;
+When I click on Register&#xD;
+-&gt; skipped because of previous errors&#xD;
+Then I see message "O campo e-mail deve ser prenchido corretamente" on Register&#xD;
+-&gt; skipped because of previous errors&#xD;
+</Text>
+      </RunInfo>
+      <RunInfo computerName="DESENVOLVIMENTO" outcome="Warning" timestamp="2026-04-14T08:19:42.8162192-03:00">
+        <Text>Given I am on Register screen&#xD;
+-&gt; skipped because of previous errors&#xD;
+When I click on Register&#xD;
+-&gt; skipped because of previous errors&#xD;
+Then I see message "O campo nome deve ser prenchido" on Register&#xD;
+-&gt; skipped because of previous errors&#xD;
+</Text>
+      </RunInfo>
+      <RunInfo computerName="DESENVOLVIMENTO" outcome="Warning" timestamp="2026-04-14T08:19:43.5815324-03:00">
+        <Text>Given I am on Register screen&#xD;
+-&gt; skipped because of previous errors&#xD;
+And I fill name&#xD;
+-&gt; skipped because of previous errors&#xD;
+And I fill e-mail "iago@teste.com"&#xD;
+-&gt; skipped because of previous errors&#xD;
+When I click on Register&#xD;
+-&gt; skipped because of previous errors&#xD;
+Then I see message "O campo senha deve ter pelo menos 6 dígitos" on Register&#xD;
+-&gt; skipped because of previous errors&#xD;
+</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

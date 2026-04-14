@@ -20,6 +20,10 @@ O objetivo e validar fluxos principais da aplicacao, como:
 - `features/`: cenarios escritos em Gherkin
 - `steps/`: implementacao das steps do SpecFlow
 - `Pages/`: Page Objects com a logica de interacao da UI
+- `Hooks/`: setup e teardown compartilhados entre os cenarios
+- `Config/`: leitura das configuracoes externas do teste
+- `Support/`: massa dinamica e contexto compartilhado da execucao
+- `scripts/`: scripts auxiliares, incluindo resumo do pipeline
 - `bin/Debug/net8.0/artifacts/`: screenshots gerados em falhas
 
 ## Pre-requisitos
@@ -48,6 +52,31 @@ Se o script ainda nao existir, faca antes:
 ```powershell
 dotnet build
 pwsh bin/Debug/net8.0/playwright.ps1 install
+```
+
+## Configuracao
+
+Os dados fixos do projeto ficam em `testsettings.json`.
+
+Nele voce pode alterar:
+
+- `BaseUrl`
+- `Browser.Headless`
+- `Login.Email`
+- `Login.Password`
+- `Register.DefaultName`
+- `Register.DefaultPassword`
+- `Register.EmailDomain`
+
+Exemplo:
+
+```json
+{
+  "BaseUrl": "https://automationpratice.com.br/",
+  "Browser": {
+    "Headless": true
+  }
+}
 ```
 
 ## Como Executar os Testes
@@ -86,7 +115,7 @@ dotnet test
 - e-mail obrigatorio
 - e-mail invalido
 - senha obrigatoria
-- cadastro com sucesso
+- cadastro com sucesso usando massa dinamica
 
 ## Boas Praticas Usadas
 
@@ -94,6 +123,9 @@ dotnet test
 - `SpecFlow` para descrever comportamento em Gherkin
 - espera explicita de elementos antes de interagir
 - screenshot automatica quando um cenario falha
+- hooks centralizados em uma classe dedicada
+- configuracao isolada em arquivo externo
+- massa de cadastro gerada dinamicamente para evitar conflito entre execucoes
 
 ## Comandos Uteis
 
@@ -109,6 +141,20 @@ Executar um filtro de testes:
 dotnet test --filter TestCategory=register
 ```
 
+## Pipeline
+
+O projeto agora possui workflow em `.github/workflows/tests.yml`.
+
+Esse pipeline:
+
+- restaura dependencias
+- compila o projeto
+- instala os navegadores do Playwright
+- executa os testes automatizados
+- gera arquivo `.trx`
+- publica resumo da execucao no GitHub Actions
+- envia artefatos com resultados e screenshots
+
 ## Observacoes
 
 - Os arquivos `.feature` estao usando textos em portugues com steps em ingles.
@@ -117,7 +163,7 @@ dotnet test --filter TestCategory=register
 
 ## Proximos Passos Sugeridos
 
-- mover dados fixos para arquivo de configuracao
-- criar massa de teste dinamica para cadastro
-- separar hooks comuns em uma classe dedicada
-- adicionar relatorio de execucao no pipeline
+- adicionar tags por tipo de suite, como smoke e regressao
+- rodar pipeline tambem por agendamento
+- gerar relatorio HTML complementar para consulta local
+- integrar execucao com ambiente de QA dedicado

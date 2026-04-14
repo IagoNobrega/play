@@ -6,33 +6,49 @@ namespace play.Pages;
 public class RegisterPage
 {
     private readonly IPage _page;
+    private readonly ILocator _nameInput;
+    private readonly ILocator _emailInput;
+    private readonly ILocator _passwordInput;
+    private readonly ILocator _registerButton;
 
     public RegisterPage(IPage page)
     {
         _page = page;
+        _nameInput = _page.Locator("#user");
+        _emailInput = _page.Locator("#email");
+        _passwordInput = _page.Locator("#password");
+        _registerButton = _page.GetByRole(AriaRole.Button, new() { Name = "Cadastrar" });
+    }
+
+    public async Task WaitUntilLoaded()
+    {
+        await _nameInput.WaitForAsync();
+        await _emailInput.WaitForAsync();
+        await _passwordInput.WaitForAsync();
+        await _registerButton.WaitForAsync();
     }
 
     public async Task FillName(string name)
     {
-        await _page.Locator("#user").ClickAsync();
-        await _page.Locator("#user").FillAsync(name);
+        await _nameInput.ClickAsync();
+        await _nameInput.FillAsync(name);
     }
 
     public async Task FillEmail(string email)
     {
-        await _page.Locator("#email").ClickAsync();
-        await _page.Locator("#email").FillAsync(email);
+        await _emailInput.ClickAsync();
+        await _emailInput.FillAsync(email);
     }
 
     public async Task FillPassword(string password)
     {
-        await _page.Locator("#password").ClickAsync();
-        await _page.Locator("#password").FillAsync(password);
+        await _passwordInput.ClickAsync();
+        await _passwordInput.FillAsync(password);
     }
 
     public async Task ClickRegister()
     {
-        await _page.GetByRole(AriaRole.Button, new() { Name = "Cadastrar" }).ClickAsync();
+        await _registerButton.ClickAsync();
     }
 
     public async Task CheckErrorMessage(string message)

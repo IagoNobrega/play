@@ -33,8 +33,6 @@ Feature: Register User
 
   @register
   Scenario: Cadastro com sucesso
-    And I fill name
-    And I fill e-mail "iago2teste@teste.com.br"
-    And I fill password "123456"
+    And I fill valid register data
     When I click on Register
     Then I am redirected after register
